@@ -12,7 +12,6 @@ int main() {
     int n;
     printf("Enter the number of books: ");
     scanf("%d", &n);
-    //review
     struct Book books[n];
     
     for (int i = 0; i < n; i++) {
@@ -22,7 +21,7 @@ int main() {
         printf("Author: ");
         scanf("%s", books[i].author);
         printf("Publication: ");
-        scanf(" %s", books[i].publication);
+        scanf("%s", books[i].publication);
         printf("Price: ");
         scanf("%f", &books[i].price);
     }

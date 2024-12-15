@@ -162,37 +162,33 @@
 int deque[MAX_SIZE];
 int front = -1, rear = -1;
 
-// Function to check if the deque is full
-int isFull() {
-    return (rear + 1) % MAX_SIZE == front;
-}
-
-// Function to check if the deque is empty
-int isEmpty() {
-    return front == -1;
-}
-
 // Function to insert an element at the rear of the deque
 void insertRear(int value) {
-    if (isFull()) {
+    // Check if the deque is full
+    if ((rear + 1) % MAX_SIZE == front) {
         printf("Deque Overflow\n");
         return;
     }
-    if (isEmpty()) {
+
+    // If deque is empty, initialize front and rear
+    if (front == -1) {
         front = rear = 0;
     } else {
         rear = (rear + 1) % MAX_SIZE;
     }
+
     deque[rear] = value;
     printf("Inserted %d at rear\n", value);
 }
 
 // Function to delete an element from the front of the deque
 void deleteFront() {
-    if (isEmpty()) {
+    // Check if the deque is empty
+    if (front == -1) {
         printf("Deque Underflow\n");
         return;
     }
+
     printf("Deleted %d from front\n", deque[front]);
     if (front == rear) {  // Reset if deque becomes empty
         front = rear = -1;
@@ -203,25 +199,31 @@ void deleteFront() {
 
 // Function to insert an element at the front of the deque
 void insertFront(int value) {
-    if (isFull()) {
+    // Check if the deque is full
+    if ((rear + 1) % MAX_SIZE == front) {
         printf("Deque Overflow\n");
         return;
     }
-    if (isEmpty()) {
+
+    // If deque is empty, initialize front and rear
+    if (front == -1) {
         front = rear = 0;
     } else {
         front = (front - 1 + MAX_SIZE) % MAX_SIZE;
     }
+
     deque[front] = value;
     printf("Inserted %d at front\n", value);
 }
 
 // Function to delete an element from the rear of the deque
 void deleteRear() {
-    if (isEmpty()) {
+    // Check if the deque is empty
+    if (front == -1) {
         printf("Deque Underflow\n");
         return;
     }
+
     printf("Deleted %d from rear\n", deque[rear]);
     if (front == rear) {  // Reset if deque becomes empty
         front = rear = -1;
@@ -232,10 +234,12 @@ void deleteRear() {
 
 // Function to display the elements of the deque
 void displayDeque() {
-    if (isEmpty()) {
+    // Check if the deque is empty
+    if (front == -1) {
         printf("Deque is Empty\n");
         return;
     }
+
     printf("Deque elements: ");
     int i = front;
     while (1) {

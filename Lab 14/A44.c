@@ -49,24 +49,43 @@ void displayList(struct Node* head) {
 
 int main() {
     struct Node* head = NULL;
-    
-    // a. Insert at first: 15, 75, 32
-    insertFirst(&head, 15);
-    insertFirst(&head, 75);
-    insertFirst(&head, 32);
-    
-    // b. Display
-    printf("List after insertions at first:\n");
-    displayList(head);
-    
-    // c. Insert at last: 78, 37, 28
-    insertLast(&head, 78);
-    insertLast(&head, 37);
-    insertLast(&head, 28);
-    
-    // d. Display
-    printf("List after insertions at last:\n");
-    displayList(head);
+    int choice, value;
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Insert at beginning\n");
+        printf("2. Insert at end\n");
+        printf("3. Display list\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert at the beginning: ");
+                scanf("%d", &value);
+                insertFirst(&head, value);
+                break;
+
+            case 2:
+                printf("Enter value to insert at the end: ");
+                scanf("%d", &value);
+                insertLast(&head, value);
+                break;
+
+            case 3:
+                printf("Current linked list:\n");
+                displayList(head);
+                break;
+
+            case 4:
+                printf("Exiting the program.\n");
+                break;
+
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 4);
 
     return 0;
 }

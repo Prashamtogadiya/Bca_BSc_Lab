@@ -115,79 +115,92 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 5  // Define the maximum size of the circular queue
+#define MAX_SIZE 5
 
 int queue[MAX_SIZE];
 int front = -1, rear = -1;
 
-// Function to check if the queue is empty
-int isEmpty() {
-    return front == -1;
-}
-
-// Function to check if the queue is full
-int isFull() {
-    return (rear + 1) % MAX_SIZE == front;
-}
-
-// Function to enqueue an element into the circular queue
 void enqueue(int value) {
-    if (isFull()) {
+    // Logic to check if the queue is full
+    if ((rear + 1) % MAX_SIZE == front) {
         printf("Circular Queue is full! Cannot enqueue %d.\n", value);
         return;
     }
-    if (isEmpty()) {
-        front = rear = 0;
+
+    // Logic for enqueue operation
+    if (front == -1 && rear == -1) {
+        front = rear = 0; // Initialize front and rear for first element
     } else {
-        rear = (rear + 1) % MAX_SIZE;
+        rear = (rear + 1) % MAX_SIZE; // Move rear circularly
     }
+
     queue[rear] = value;
     printf("Enqueued: %d\n", value);
 }
 
-// Function to dequeue an element from the circular queue
 void dequeue() {
-    if (isEmpty()) {
+    // Logic to check if the queue is empty
+    if (front == -1) {
         printf("Circular Queue is empty! Cannot dequeue.\n");
         return;
     }
+
+    // Logic for dequeue operation
     printf("Dequeued: %d\n", queue[front]);
-    if (front == rear) {  // Reset queue when it becomes empty
-        front = rear = -1;
+    if (front == rear) {
+        front = rear = -1; // Reset queue if it becomes empty
     } else {
-        front = (front + 1) % MAX_SIZE;
+        front = (front + 1) % MAX_SIZE; // Move front circularly
     }
 }
 
-// Function to display the elements in the circular queue
 void display() {
-    if (isEmpty()) {
+    // Logic to check if the queue is empty
+    if (front == -1) {
         printf("Circular Queue is empty.\n");
         return;
     }
+
     printf("Circular Queue elements: ");
     int i = front;
     while (1) {
         printf("%d ", queue[i]);
         if (i == rear) break;
-        i = (i + 1) % MAX_SIZE;
+        i = (i + 1) % MAX_SIZE; // Move circularly
     }
     printf("\n");
 }
 
 int main() {
-    // Perform operations as described
-    enqueue(15);  // Enqueue 15
-    enqueue(75);  // Enqueue 75
-    enqueue(32);  // Enqueue 32
-    dequeue();    // Dequeue
-    enqueue(14);  // Enqueue 14
-    enqueue(16);  // Enqueue 16
-    display();    // Display queue elements
-    dequeue();    // Dequeue
-    enqueue(28);  // Enqueue 28
-    enqueue(39);  // Enqueue 39 (will not work if queue is full)
-    enqueue(46);  // Enqueue 46 (will not work if queue is full)
-    display();    // Display queue elements
-    return 0;
+    int choice, value;
+
+    while (1) {
+        printf("\nMenu:\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the value to enqueue: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
+
+            case 2:
+                dequeue();
+                break;
+
+            case 3:
+                display();
+                break;
+
+            case 4:
+                printf("Exiting program.\n");
+                return 0;
+
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
 }
