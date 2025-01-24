@@ -26,24 +26,20 @@ int pop() {
 }
 
 // Change the nth element from the top of the stack
-void change(int position_from_top, int new_value) {
-    if (position_from_top > 0 && position_from_top <= (top + 1)) {
-        int index = top - position_from_top + 1;
-        stack[index] = new_value;
-        printf("Changed %dth element from top to %d\n", position_from_top, new_value);
+void change(int pos, int value) {
+    if (top-pos+1<0) {
+        printf("Invalid Position");
     } else {
-        printf("Invalid position\n");
+        stack[top-pos+1]=value;
     }
 }
 
 // Peep the nth element from the top of the stack
-int peep(int position_from_top) {
-    if (position_from_top > 0 && position_from_top <= (top + 1)) {
-        int index = top - position_from_top + 1;
-        return stack[index];
+int peep(int pos) {
+    if (top-pos+1<0) {
+        printf("Invalid Position");
     } else {
-        printf("Invalid position\n");
-        return -1;  // Error value
+        return stack[top-pos+1];
     }
 }
 
@@ -66,9 +62,9 @@ int main() {
 
     // Peep 2nd element from top
     int value = peep(2);
-    if (value != -1) {
-        printf("Peeped 2nd element from top: %d\n", value);
-    }
+    // if (value != -1) {
+    //     printf("Peeped 2nd element from top: %d\n", value);
+    // }
 
     // Change 3rd element from top to 99
     change(3, 99);

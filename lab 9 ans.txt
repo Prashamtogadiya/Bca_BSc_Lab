@@ -1,0 +1,31 @@
+lab 9 ans 
+
+1) ABCDE^*/-
+2) ABCD^^+ EF*G/-
+3) ABC*D/+E-FG/HI+/+
+4) AB+C*DBAC*+/+D+
+5) AB+CD*E/-FG$IJ+/+
+6) ABCD^^+EFD/+*
+
+LAB-10 
+ANSWER: 
+1. -A/B*C^DE
+2. +A-^B^CD*E/FG
+3. +A-*B/CD+E/F/G+HI
+4. +*+ABC+/D+B*ACD
+5. +A-B+*C/DE/$FG+IJ
+6. *+A^B^CD+E/FD
+
+LAB-11
+Answer :
+1. 40.5
+2. 68
+3. 350
+4. 29
+5. 4
+6. 9	
+
+
+
+
+
