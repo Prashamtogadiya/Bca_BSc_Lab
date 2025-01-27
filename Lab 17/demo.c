@@ -67,36 +67,36 @@
 // ---
 
 // 3. *Dynamic Memory Allocation for Structures*
-//    c
-//    #include <stdio.h>
-//    #include <stdlib.h>
-//    struct Employee {
-//        int id;
-//        char name[50];
-//        float salary;
-//    };
+   
+   #include <stdio.h>
+   #include <stdlib.h>
+   struct Employee {
+       int id;//4
+       char name[50];
+       float salary;
+   };
 
-//    int main() {
-//        struct Employee *emp = (struct Employee *)malloc(sizeof(struct Employee));
+   int main() {
+       struct Employee *emp = (struct Employee *)malloc(sizeof(struct Employee));
 
 
-//        // Input employee details
-//        printf("Enter Employee ID: ");
-//        scanf("%d", &emp->id);
-//        printf("Enter Employee Name: ");
-//        scanf("%s", emp->name);
-//        printf("Enter Employee Salary: ");
-//        scanf("%f", &emp->salary);
+       // Input employee details
+       printf("Enter Employee ID: ");
+       scanf("%d", &emp->id);
+       printf("Enter Employee Name: ");
+       scanf("%s", emp->name);
+       printf("Enter Employee Salary: ");
+       scanf("%f", &emp->salary);
 
-//        // Display employee details
-//        printf("\nEmployee Details:\n");
-//        printf("ID: %d\n", emp->id);
-//        printf("Name: %s\n", emp->name);
-//        printf("Salary: %.2f\n", emp->salary);
+       // Display employee details
+       printf("\nEmployee Details:\n");
+       printf("ID: %d\n", emp->id);
+       printf("Name: %s\n", emp->name);
+       printf("Salary: %.2f\n", emp->salary);
 
-//        free(emp); // Free allocated memory
-//        return 0;
-//    }
+       free(emp); // Free allocated memory
+       return 0;
+   }
    
 
 // ---
@@ -160,8 +160,8 @@
 
 //        return 0;
 //    }
-   
-
+   //
+//
 // ---
 
 // 6. *Pass Structure to a Function Using Pointer*
